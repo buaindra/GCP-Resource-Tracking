@@ -32,13 +32,14 @@ fi
 _billingtable=""
 for bq_t in $(gcloud alpha bq tables list  --dataset $DATASET --project $PROJECT_ID --format="csv[no-heading, separator=';'](id,tableReference.tableId)")
 do
-  IFS=';' read -r -a bqArray<<< "$bq_t"
-  echo "bqArray[0]: $bqArray[0]"
-  echo "bqArray[1]: $bqArray[1]"
-  echo "bqArray[2]: $bqArray[2]"
-	if [[ "${bqArray[1]}" == *"gcp_billing_export_resource_v1"* ]]; then _billingtable="${bqArray[1]}"; fi
-	if [[ -z "$_billingtable" ]]; then echo "Billing table created: $_billingtable"; else echo "Billing table not created"; fi
-	echo "${bqArray[1]: ${bqArray[0]}}"
+  IFS=';' read -r -a bqArray <<< "$bq_t"
+  _billingtable="${bqArray[1]}"
+	if [[ "$_billingtable" == *"gcp_billing_export_resource_v1_"* ]]
+	then 
+	  echo "Billing table created: $_billingtable" 
+	else 
+	  echo "Billing table not created"
+    fi
 done
 
 
