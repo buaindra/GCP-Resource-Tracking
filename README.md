@@ -1,6 +1,11 @@
 # GCP-Resource-Tracking
 This repo I am creating, to easily track the GCP Resources. It can be project details, VMs, Bucket details, Bigquery tables etc.
 
+#Ref site-
+1. Gcloud Bash Script: https://cloud.google.com/blog/products/it-ops/filtering-and-formatting-fun-with
+2. Billing data export to Bigquery: https://cloud.google.com/billing/docs/how-to/export-data-bigquery-tables
+3. Cloud SDK-Command Line Interface: https://cloud.google.com/sdk/gcloud/reference/alpha/bq/tables/list
+
 #Pre-requisite
 1. Make sure, you have atleast viewer role in GCP Console.
 2. Project should be linked with billing account to list down some resources.
